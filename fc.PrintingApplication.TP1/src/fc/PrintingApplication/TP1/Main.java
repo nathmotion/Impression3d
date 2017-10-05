@@ -74,8 +74,7 @@ public class Main
 		float maxY=-5000;
 		float minZ=10;
 		float maxZ=0;
-		int cmp=0;
-		int cmp2=0;
+		
 		for(FaceVertex vertex : Sommetobjet ){
 				minZ=Math.min(minZ,vertex.v.z);
 				maxZ=Math.max(maxZ, vertex.v.z);
@@ -98,85 +97,10 @@ public class Main
 			g.setColor(Color.GREEN);
 			
 			for(Face f:FaceObjet){
-				pointTranche=new ArrayList<FaceVertex>();
+				Triangle t= new Triangle();
 				
-
-				float x=0;
-				float y=0;
-				float z=0;
-				
-				/**float zmax= Math.max(f.vertices.get(0).v.z,f.vertices.get(1).v.z);
-				zmax=Math.max(zmax,f.vertices.get(1).v.z);
-				
-				float zmin= Math.min(f.vertices.get(0).v.z,f.vertices.get(1).v.z);
-				zmin=Math.min(zmin,f.vertices.get(1).v.z);
-				**/
-				float zmax=0;
-				float zmin=0;
-				int indMax=0;
-				int indMin=0;
-				for(int i=0;i<3;i++){
-					if( i==2){
-						
-					// detection de zmin et zmax
-						zmax= Math.max(f.vertices.get(2).v.z,f.vertices.get(0).v.z);
-						 zmin= Math.min(f.vertices.get(2).v.z,f.vertices.get(0).v.z);
-					// on regarde le sens du edges vecteur plus point smin au zmax
-						 if(zmax == f.vertices.get(0).v.z){
-							 indMax=0;
-							 indMin=2;
-						 }
-						 else{
-							 indMax=2;
-							 indMin=0;
-						 }
-						 
-						
-					}
-					else{
-					 zmax= Math.max(f.vertices.get(i).v.z,f.vertices.get(i+1).v.z);
-					 zmin= Math.min(f.vertices.get(i).v.z,f.vertices.get(i+1).v.z);
-					 if(zmax == f.vertices.get(i).v.z){
-						 indMax=i;
-						 indMin=i+1;
-					 }
-					 else{
-						 indMax=i+1;
-						 indMin=i;
-					 }
-					 
-				
-					}
-
-					 if((pTranche>zmin && pTranche<zmax) )
-					 {
-					cmp++;
-					
-						float t=(pTranche-f.vertices.get(indMin).v.z)/(f.vertices.get(indMax).v.z-f.vertices.get(indMin).v.z);	
-						
-						if( t<=1 && t>=0){
-						x=f.vertices.get(indMin).v.x+(f.vertices.get(indMax).v.x-f.vertices.get(indMin).v.x)*t;
-						y=f.vertices.get(indMin).v.y+(f.vertices.get(indMax).v.y-f.vertices.get(indMin).v.y)*t;	
-						FaceVertex vertex=new FaceVertex();
-						vertex.v=new VertexGeometric(x,y,pTranche);
-						pointTranche.add(vertex);
-						tranche.setRGB((int)((x+40)*10),(int)((y+40)*10), Color.RED.getRGB());
-						}		
-			/*+		 Segment2f s1=new Segment2f();			 
-					 s1.p1=pointTranche.get(0).v;
-					 s1.p2=pointTranche.get(1).v;
-					listeST.add(s1);*/
-					 }
-					
-		
-			}
-				if( pointTranche.size()==2){
-						cmp2++;
-					//	bresenhamLine(tranche,(pointTranche.get(1).v.x+40)*10,(pointTranche.get(0).v.x+40)*10,(pointTranche.get(1).v.y+40)*10,(pointTranche.get(0).v.y+40)*10);
-						bresenhamLine(tranche,(pointTranche.get(0).v.x+40)*10,(pointTranche.get(1).v.x+40)*10,(pointTranche.get(0).v.y+40)*10,(pointTranche.get(1).v.y+40)*10);
-					//g.drawLine((int)(pointTranche.get(0).v.x+40)*10,(int)(pointTranche.get(1).v.x+40)*10,(int)(pointTranche.get(0).v.y+40)*10,(int)(pointTranche.get(1).v.y+40)*10);
-					}
-		//	System.out.println(cmp2+" / "+ cmp);
+				for (int i= 0;i)
+				t.sommet()
 	
 		
 	
@@ -197,7 +121,6 @@ public class Main
 		
 			
 		}
-		System.out.println(cmp2+" / "+ FaceObjet.size());
 }// end main 
 	
 	public static void parseObjFile(String filename)
@@ -298,56 +221,5 @@ public class Main
 		
 		
 	
-	/***
-	 * 				 TRACAGE LIGNE BRESENHAM 
-	 * **/
-	
 
-	static BufferedImage bresenhamLine(BufferedImage im,float x1,float x2,float y1, float y2){
-		int x=(int)x1;
-		int y=(int)y1;
-		int dx= (int)(x2-x1);
-		int dy=(int)(y2-y1);
-		int xinc=(dx>0)?1:-1;
-		int yinc=(dy>0)?1:-1;
-		dx=Math.abs(dx);
-		dy=Math.abs(dy);
-		im.setRGB((int)x1,(int)y1, Color.GREEN.getRGB());
-		im.setRGB((int)x2,(int)y2, Color.GREEN.getRGB());
-		im.setRGB(x,y, Color.GREEN.getRGB());
-		if(dx>dy){
-		 int cumul=dx/2;
-		 for(int i=1;i<=dx;i++){
-			 x+=xinc;
-			 cumul+=dy;
-			 if(cumul>=dx){
-				cumul-=dx;
-				y+=yinc;
-			 }
-
-		  		im.setRGB(x,y, Color.GREEN.getRGB()); 
-
-		 }
-		}
-		else{
-			int cumul = dy / 2 ;
-
-			    for (int i = 1 ; i <= dy ; i++ ) {
-			      y += yinc ;
-			      cumul += dx ;
-			      if ( cumul >= dy ) {
-			        cumul -= dy ;
-			        x += xinc ; }
-			 
-			  		im.setRGB(x,y, Color.GREEN.getRGB()); 
-			  	}
-			   }		
-				
-				
-		
-		
-		
-		return im;
-		
-	}
 }
