@@ -16,8 +16,8 @@ public class Triangle {
 	
 
 	
-	BufferedImage intersectionTrancheSegment(BufferedImage tranche,Float pTranche ,ArrayList<FaceVertex> pointTranche){
-		pointTranche=new ArrayList<FaceVertex>();
+	BufferedImage intersectionTrancheSegment(BufferedImage tranche,Float pTranche ){
+	ArrayList<FaceVertex> pointTranche=new ArrayList<FaceVertex>();
 		
 
 		float x=0;
