@@ -1,3 +1,4 @@
+package fc.PrintingApplication.TP1;
 
 public class Equation {
 public int Dy;
@@ -6,16 +7,16 @@ public int Dx;
 public int a;
 public int b;
 public int c;
-public Point p1;
+/*public Point p1;
 public Point p2;
-Segment s;
+Segment s;*/
   
   
 	public Equation(){
 		
 	}
 
-	public Equation (Arrete A){
+	/*public Equation (Arrete A){
 		Dy=(int)A.s2.y - (int)A.s1.y;
 		Dx=(int)A.s2.x - (int)A.s1.x;
 
@@ -47,11 +48,12 @@ Segment s;
 
 		c=(int)(Dy*s.p1.x)-(int)(Dx*s.p1.y);  
 
-	}
+	}*/
 	
 
 	// 
 	/*public double resEqua(Point2D p){
 		return 
 	}*/
+
 }

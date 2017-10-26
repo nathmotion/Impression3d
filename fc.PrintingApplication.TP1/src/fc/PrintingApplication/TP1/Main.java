@@ -1,5 +1,6 @@
 package fc.PrintingApplication.TP1;
 
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -16,8 +17,12 @@ import com.owens.oobjloader.builder.FaceVertex;
 import com.owens.oobjloader.builder.VertexGeometric;
 import com.owens.oobjloader.parser.Parse;
 import java.awt.Graphics2D;
+
+
 public class Main
 {
+
+	//ClipperOffset co;
 	static Graphics2D g;
 	static BufferedImage im = null;
 	static BufferedImage tranche = null;
@@ -45,9 +50,11 @@ public class Main
 		float boiteEnglobantX[]=new float[2] ;
 		float boiteEnglobantY[]=new float[2] ;
 		float boiteEnglobantZ[]=new float[2] ;
-		String name="CuteOcto.obj";
+		String name="dragon.obj";
 		im= new BufferedImage(sizeX,sizeY,BufferedImage.TYPE_INT_RGB);
+		
 		tranche= new BufferedImage(sizeX,sizeY,BufferedImage.TYPE_INT_RGB);
+		
 		for(int x=0;x<sizeX;x++){
 			for(int y=0;y<sizeY;y++){
 
@@ -130,7 +137,7 @@ public class Main
 	/**
 	 * 				REMPLISSAGE POLYGONE ARBITRAIRE
 	 * **/
-	public static BufferedImage Remplissage(BufferedImage im,Polygone p){
+	/*public static BufferedImage Remplissage(BufferedImage im,Polygone p){
 		int i;
 		int x;
 
@@ -172,7 +179,7 @@ public class Main
 			
 		}//fin for
 		return im;
-	}
+	}*/
 
 	
 
